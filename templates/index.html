@@ -1,0 +1,79 @@
+<html>
+<head>
+    <style>
+        table {
+            width: 100%; 
+        }
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #045daa;
+            color: white;
+        }
+
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        td {
+            padding: 2px; 
+            text-align: center;
+        }
+        tr:nth-child(even){background-color: #f2f2f2;}
+        tr:hover {background-color: #ddd;}
+        td.goodReturn {
+            background-color: green;
+            color: white;
+        }
+        td.midReturn {
+            background-color: rgb(255, 174, 0);
+            color: white;
+        }
+        td.badReturn {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sector Returns from 2017-01-01</h1>
+
+    <table>
+        <tr>
+            <th>Sector</th>
+            <th>Ticker</th>
+            <th>Portfolio Value</th>
+            <th>% Return</th>
+        </tr>
+        {% for sector in results %}
+            {% if results[sector]["% Return"] >= 100 %}
+                <tr>
+                    <td>{{ sector }}</td>
+                    <td>{{ sectors[sector] }}</td>
+                    <td>{{ results[sector]["Portfolio Value"] }}</td>
+                    <td class="goodReturn">{{ results[sector]["% Return"] }}</td>
+                </tr>
+            {% endif %}
+
+            {% if (results[sector]["% Return"]) < 100 and (results[sector]["% Return"]) > 0 %}
+                <tr>
+                    <td>{{ sector }}</td>
+                    <td>{{ sectors[sector] }}</td>
+                    <td>{{ results[sector]["Portfolio Value"] }}</td>
+                    <td class="midReturn">{{ results[sector]["% Return"] }}</td>
+                </tr>
+            {% endif %}
+
+            {% if results[sector]["% Return"] <= 0 %}
+                <tr>
+                    <td>{{ sector }}</td>
+                    <td>{{ sectors[sector] }}</td>
+                    <td>{{ results[sector]["Portfolio Value"] }}</td>
+                    <td class="badReturn">{{ results[sector]["% Return"] }}</td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+</body>
+</html>
