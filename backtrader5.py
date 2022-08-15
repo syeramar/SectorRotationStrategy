@@ -84,10 +84,16 @@ with open("log.txt", 'r+') as f:
     f.truncate(0)
     cerebro.run()
 
-# Get final portfolio Value
-portvalue = cerebro.broker.getvalue()
-pnl = portvalue - startcash
+    # Get final portfolio Value
+    portvalue = cerebro.broker.getvalue()
+    pnl = portvalue - startcash
 
-# Print out the final result
-print('Final Portfolio Value: ${}'.format(portvalue))
-print('P/L: ${}'.format(pnl))
+    # Print out the final result
+    f.write("--------------------RESULT--------------------")
+    f.write("\n")
+    f.write('Final Portfolio Value: ${}'.format(portvalue))
+    f.write("\n")
+    f.write('P/L: ${}'.format(pnl))
+    f.write("\n")
+    f.write("% Return: " + str(round(100 * pnl / startcash, 2)))
+    f.write("\n")
