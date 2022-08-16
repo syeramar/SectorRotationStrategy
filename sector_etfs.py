@@ -9,5 +9,7 @@ sector_etfs = {
     "Health Care": "PPH",
     "Real Estate": "REZ",
     "Communciation Services": "EWCO",
-    "Utilities": "JHMU"
+    "Utilities": "JHMU",
+    "Tech": "QQQ", 
+    "Tesla": "TSLA"
 }

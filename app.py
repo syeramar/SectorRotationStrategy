@@ -20,7 +20,7 @@ def index():
     results = {}
     for sector in sector_etfs:
         ticker = sector_etfs[sector]
-        portval, pnl, perc_return = run_strategy(ticker)
+        portval, pnl, perc_return = run_strategy(ticker, sdate='2020-01-01')
         results[sector] = {"Portfolio Value": portval, "Profit": pnl, "% Return": perc_return}
 
     return render_template('index.html', sectors=sector_etfs, results=results)
