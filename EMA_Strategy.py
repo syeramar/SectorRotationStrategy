@@ -21,7 +21,8 @@ def run_strategy(ticker, sdate='2017-01-01', edate=date.today()):
 
         def next(self):
             if not self.position:
-                if self.ema5 > self.ema7:
+                if self.ema5 > self.ema7 and self.cash != 0:
+                    f.write(ticker)
                     f.write("--------------------BUY--------------------")
                     f.write("\n")
                     f.write(self.log('Close, %.2f' % self.data.close[0]))

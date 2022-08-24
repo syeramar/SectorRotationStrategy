@@ -47,32 +47,18 @@
             <th>% Return</th>
         </tr>
         {% for sector in results %}
-            {% if results[sector]["% Return"] >= 100 %}
-                <tr>
-                    <td>{{ sector }}</td>
-                    <td>{{ sectors[sector] }}</td>
-                    <td>{{ results[sector]["Portfolio Value"] }}</td>
-                    <td class="goodReturn">{{ results[sector]["% Return"] }}</td>
-                </tr>
-            {% endif %}
-
-            {% if (results[sector]["% Return"]) < 100 and (results[sector]["% Return"]) > 0 %}
-                <tr>
-                    <td>{{ sector }}</td>
-                    <td>{{ sectors[sector] }}</td>
-                    <td>{{ results[sector]["Portfolio Value"] }}</td>
-                    <td class="midReturn">{{ results[sector]["% Return"] }}</td>
-                </tr>
-            {% endif %}
-
-            {% if results[sector]["% Return"] <= 0 %}
-                <tr>
-                    <td>{{ sector }}</td>
-                    <td>{{ sectors[sector] }}</td>
-                    <td>{{ results[sector]["Portfolio Value"] }}</td>
-                    <td class="badReturn">{{ results[sector]["% Return"] }}</td>
-                </tr>
-            {% endif %}
+            <tr>
+                <td>{{ sector }}</td>
+                <td>
+                    <a href ="https://www.tradingview.com/chart/oKiFHHy0/?symbol={{ sectors[sector] }}" target="_blank">
+                        <div>
+                            {{ sectors[sector] }}
+                        </div>
+                    </a>
+                </td>
+                <td>{{ results[sector]["Portfolio Value"] }}</td>
+                <td>{{ results[sector]["% Return"] }}</td>
+            </tr>
         {% endfor %}
     </table>
 </body>
