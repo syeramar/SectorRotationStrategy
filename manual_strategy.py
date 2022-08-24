@@ -34,7 +34,10 @@ def run_strategy(symbol, sdate="2020-01-01", edate=date.today()):
             print("---SELL---", " Date: ", i[0], " Cash: ", cash, " Close: ", close)
             quantity = 0
 
-    port_value = round(data.iloc[-1].Close * quantity, 2)
+    if cash == 0:
+        port_value = round(data.iloc[-1].Close * quantity, 2)
+    else:
+        port_value = round(cash, 2)
     pnl = port_value - start_cash
     perc_return = round(100 * pnl / start_cash, 2)
 
