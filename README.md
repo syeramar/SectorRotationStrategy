@@ -1,5 +1,15 @@
 # SectorRotationStrategy
 
-Use command 
+Use commands
 
-python backtrader5.py
+For Mac
+
+export FLASK_ENV=development
+
+flask run
+
+For Windows
+
+set FLASK_ENV=development
+
+flask run
